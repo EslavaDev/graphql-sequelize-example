@@ -47,7 +47,11 @@ const PostModel = setupPostModel(config)
 
 
   // para validad que la base de datos esta bien configurada
-  sequelize.authenticate().then(res => console.log("hola")).catch(e => console.error(e))
+  sequelize.sync()
+  .then(console.log("hola"))
+  .catch((err) => {
+    console.error(`Server failed to start due to error: ${err}`)
+  });
 
   // configuraciond e la base de datos
 
